@@ -22,7 +22,7 @@ function calcularIMC() {
 
     /* 5. Classificação de acordo com a tabela da OMS */
     let classificacao;
-    let classe; // classe CSS que muda a cor do resultado (Desafio Extra)
+    let classe; // classe CSS que muda a cor do resultado
 
     if (imc < 18.5) {
         classificacao = 'Abaixo do peso';
@@ -40,7 +40,7 @@ function calcularIMC() {
 
     /* 6. Exibição: insere o resultado na área reservada do HTML,
           com o IMC formatado em duas casas decimais (.toFixed(2)) */
-    resultado.className = 'ativo ' + classe; // troca a cor de fundo (Desafio Extra)
+    resultado.className = 'ativo ' + classe; // troca a cor de fundo
     resultado.innerHTML =
         '<p class="imc-rotulo">Seu IMC</p>' +
         '<p class="imc-valor">' + imc.toFixed(2) + '</p>' +
@@ -57,4 +57,25 @@ function exibirErro(mensagem) {
 form.addEventListener('submit', function (evento) {
     evento.preventDefault(); // impede que a página recarregue
     calcularIMC();
+});
+
+/* ===== Tema claro/escuro (botão no canto superior direito) ===== */
+const btnTema = document.getElementById('btn-tema');
+
+/* Aplica o tema salvo; se o usuário nunca escolheu, segue a preferência do sistema */
+let preferenciaSalva = null;
+try {
+    preferenciaSalva = localStorage.getItem('tema');
+} catch (e) { /* sem armazenamento: segue o padrão claro */ }
+
+if (preferenciaSalva === 'escuro' || (!preferenciaSalva && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('escuro');
+}
+
+/* Clique no botão alterna o tema e guarda a escolha do usuário */
+btnTema.addEventListener('click', function () {
+    const escuroAtivo = document.documentElement.classList.toggle('escuro');
+    try {
+        localStorage.setItem('tema', escuroAtivo ? 'escuro' : 'claro');
+    } catch (e) { /* sem armazenamento: o tema vale apenas nesta visita */ }
 });

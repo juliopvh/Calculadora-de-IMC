@@ -174,3 +174,240 @@ footer {
     color: #5a7380;
     border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
+
+/* ==================================================================== */
+/* ===== Tema claro/escuro (botão no canto superior direito) =========== */
+/* ==================================================================== */
+
+:root {
+    color-scheme: light; /* controles nativos seguem o esquema claro */
+}
+
+/* A classe .escuro é adicionada ao <html> pelo script.js */
+:root.escuro {
+    color-scheme: dark;
+}
+
+/* Botão circular flutuante, fixo no canto superior direito */
+.btn-tema {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 100; /* fica sempre acima da calculadora */
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    /* Material translúcido com blur (efeito de vidro) */
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px) saturate(160%);
+    -webkit-backdrop-filter: blur(10px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 4px 14px rgba(19, 55, 73, 0.18);
+    color: #133749;
+    transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease,
+        box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.btn-tema:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(19, 55, 73, 0.25);
+}
+
+/* Feedback imediato: acontece no toque, não no clique final */
+.btn-tema:active {
+    transform: scale(0.92);
+}
+
+/* Destaque visível ao navegar pelo teclado */
+.btn-tema:focus-visible {
+    outline: none;
+    border-color: #4e82a3;
+    box-shadow: 0 0 0 3px rgba(78, 130, 163, 0.35);
+}
+
+/* No modo claro mostra a lua (ir para o escuro); no escuro, o sol */
+.icone-sol {
+    display: none;
+}
+
+html.escuro .icone-sol {
+    display: block;
+}
+
+html.escuro .icone-lua {
+    display: none;
+}
+
+/* ---------- Paleta do tema escuro, derivada da identidade da logo ---------- */
+
+html.escuro body {
+    color: #e2e8f0;
+}
+
+/* O fundo escuro entra em fade por meio de um "véu" fixo atrás do conteúdo */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(135deg, #0d1a22 0%, #0f2432 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+html.escuro body::before {
+    opacity: 1;
+}
+
+/* Cartão vira superfície elevada, com um filete de luz nas bordas */
+html.escuro .calculadora {
+    background: #16232b;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+html.escuro h1 {
+    color: #e2e8f0;
+}
+
+html.escuro .subtitulo {
+    color: #8ba0ad;
+}
+
+html.escuro label {
+    color: #c2d1da;
+}
+
+html.escuro input {
+    background: #1c2b34;
+    border-color: #334753;
+    color: #e2e8f0;
+}
+
+html.escuro input:focus {
+    border-color: #4e82a3;
+    box-shadow: 0 0 0 3px rgba(78, 130, 163, 0.35);
+}
+
+html.escuro input::placeholder {
+    color: #64808f;
+}
+
+/* Botão de calcular: azul aço mais claro, para contrastar no cartão escuro */
+html.escuro button {
+    background: #2e7da7;
+}
+
+html.escuro button:hover {
+    background: #28709c;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* A logo escura precisa de mais brilho para aparecer no fundo escuro */
+html.escuro .logo {
+    filter: brightness(1.85);
+}
+
+html.escuro .btn-tema {
+    background: rgba(30, 45, 56, 0.55);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: #a5cbe4;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+html.escuro .btn-tema:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+html.escuro footer {
+    color: #7d95a3;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Classificação: mesmas significâncias (verde/amarelo/vermelho/azul),
+   adaptadas em luminosidade para dialogar com o cartão escuro */
+html.escuro .peso-abaixo {
+    background: #123047;
+    color: #8fc6e8;
+}
+
+html.escuro .peso-normal {
+    background: #123322;
+    color: #7fe0a6;
+}
+
+html.escuro .sobrepeso {
+    background: #3a3416;
+    color: #f2d174;
+}
+
+html.escuro .obesidade {
+    background: #43201f;
+    color: #ff9c96;
+}
+
+html.escuro .erro {
+    background: #43201f;
+    color: #ff9c96;
+    border-color: rgba(248, 113, 113, 0.7);
+}
+
+/* ---------- Transições suaves entre os dois temas ---------- */
+
+body,
+.calculadora,
+footer,
+#resultado {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+input {
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.4s ease, color 0.4s ease;
+}
+
+button {
+    transition: background 0.35s ease, transform 0.2s, box-shadow 0.2s;
+}
+
+.logo {
+    transition: filter 0.4s ease;
+}
+
+/* ---------- Respeito às preferências do usuário ---------- */
+
+/* Prefere menos movimento: troca de tema sem animação */
+@media (prefers-reduced-motion: reduce) {
+
+    body,
+    body::before,
+    .calculadora,
+    footer,
+    #resultado,
+    input,
+    button,
+    .logo,
+    .btn-tema {
+        transition: none !important;
+    }
+}
+
+/* Prefere menos transparência: material do botão fica sólido */
+@media (prefers-reduced-transparency: reduce) {
+    .btn-tema {
+        background: #ffffff;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    html.escuro .btn-tema {
+        background: #22313a;
+    }
+}

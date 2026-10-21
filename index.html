@@ -3,18 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        /* Aplica o tema salvo o quanto antes, para a página não "piscar" clara */
+        try {
+            var temaSalvo = localStorage.getItem('tema');
+            if (temaSalvo === 'escuro' || (!temaSalvo && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('escuro');
+            }
+        } catch (e) { /* sem armazenamento: segue o padrão claro */ }
+    </script>
     <title>Calculadora de IMC</title>
     <link rel="icon" href="logo.png" type="image/png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Botão para alternar entre tema claro e escuro (canto superior direito) -->
+    <button id="btn-tema" type="button" class="btn-tema" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+        <svg class="icone-lua" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="icone-sol" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </button>
+
     <!-- Área central da página -->
     <main>
         <section class="calculadora">
             <img class="logo" src="logo.png" alt="Logo da Calculadora de IMC">
             <h1>Calculadora de IMC</h1>
-            <p class="subtitulo">Índice de Massa Corporal (OMS)</p>
+            <p class="subtitulo">Índice de Massa Corporal</p>
 
             <!-- Formulário com os campos de entrada -->
             <form id="form-imc">
@@ -33,7 +60,7 @@
         </section>
     </main>
 
-    <!-- Rodapé obrigatório -->
+    <!-- Rodapé -->
     <footer>
         <p>Desenvolvido por: Júlio César</p>
     </footer>
