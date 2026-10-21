@@ -1,0 +1,176 @@
+/* ===== Reset e configurações gerais ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #edf2f6 0%, #d8e3eb 100%);
+    color: #1f2937;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Centralização da calculadora na tela ===== */
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+}
+
+.calculadora {
+    background: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    padding: 36px 32px;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(19, 55, 73, 0.15);
+}
+
+/* ===== Logo ===== */
+.logo {
+    display: block;          /* permite centralizar com margin auto */
+    margin: 0 auto 16px;    /* centralizada e com espaço abaixo */
+    max-width: 140px;       /* tamanho do logo na tela (ajuste aqui) */
+    height: auto;           /* mantém a proporção original da imagem */
+    border-radius: 12px;
+}
+
+/* ===== Títulos ===== */
+h1 {
+    font-size: 26px;
+    text-align: center;
+    color: #133749;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #5a7380;
+    font-size: 14px;
+    margin: 6px 0 28px;
+}
+
+/* ===== Rótulos e campos de entrada ===== */
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 16px;
+    border: 1px solid #b8cdda;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Efeito quando o campo recebe foco */
+input:focus {
+    outline: none;
+    border-color: #4e82a3;
+    box-shadow: 0 0 0 3px rgba(78, 130, 163, 0.25);
+}
+
+/* ===== Botão com efeito :hover ===== */
+button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #133749;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+/* Requisito: efeito visual ao passar o mouse */
+button:hover {
+    background: #102d3c;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(19, 55, 73, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* ===== Área do resultado (começa vazia e oculta) ===== */
+#resultado {
+    display: none;
+    margin-top: 24px;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* Aparece apenas quando o JavaScript insere um resultado */
+#resultado.ativo {
+    display: block;
+}
+
+.imc-rotulo {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.imc-valor {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 4px 0;
+}
+
+.imc-classificacao {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ===== Desafio Extra: cores dinâmicas conforme a classificação ===== */
+.peso-abaixo {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.peso-normal {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.sobrepeso {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.obesidade {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Mensagem de erro de validação */
+.erro {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px dashed #ef4444;
+}
+
+/* ===== Rodapé ===== */
+footer {
+    text-align: center;
+    padding: 16px;
+    font-size: 14px;
+    color: #5a7380;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Área central da página -->
+    <main>
+        <section class="calculadora">
+            <img class="logo" src="logo.png" alt="Logo da Calculadora de IMC">
+            <h1>Calculadora de IMC</h1>
+            <p class="subtitulo">Índice de Massa Corporal (OMS)</p>
+
+            <!-- Formulário com os campos de entrada -->
+            <form id="form-imc">
+                <label for="peso">Peso (kg)</label>
+                <input type="number" id="peso" placeholder="Ex: 70.5" step="0.1">
+
+                <label for="altura">Altura (m)</label>
+                <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01">
+
+                <!-- Botão que dispara o cálculo -->
+                <button type="submit">Calcular IMC</button>
+            </form>
+
+            <!-- Área reservada para exibir o resultado -->
+            <div id="resultado"></div>
+        </section>
+    </main>
+
+    <!-- Rodapé obrigatório -->
+    <footer>
+        <p>Desenvolvido por: Júlio César</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
