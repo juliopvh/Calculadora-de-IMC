@@ -53,7 +53,7 @@ function exibirErro(mensagem) {
     resultado.innerHTML = '<p class="imc-classificacao">' + mensagem + '</p>';
 }
 
-/* ===== Evento: dispara o cálculo ao clicar no botão ===== */
+/* ===== dispara o cálculo ao clicar no botão ===== */
 form.addEventListener('submit', function (evento) {
     evento.preventDefault(); // impede que a página recarregue
     calcularIMC();

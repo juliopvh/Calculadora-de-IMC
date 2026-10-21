@@ -95,7 +95,7 @@ button {
     transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-/* Requisito: efeito visual ao passar o mouse */
+/* efeito visual ao passar o mouse */
 button:hover {
     background: #102d3c;
     transform: translateY(-2px);
@@ -106,7 +106,7 @@ button:active {
     transform: translateY(0);
 }
 
-/* ===== Área do resultado (começa vazia e oculta) ===== */
+/* ===== Área do resultado ===== */
 #resultado {
     display: none;
     margin-top: 24px;
@@ -175,9 +175,7 @@ footer {
     border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-/* ==================================================================== */
-/* ===== Tema claro/escuro (botão no canto superior direito) =========== */
-/* ==================================================================== */
+/* ===== Tema claro/escuro (botão no canto superior direito) ===== */
 
 :root {
     color-scheme: light; /* controles nativos seguem o esquema claro */
@@ -243,7 +241,7 @@ html.escuro .icone-lua {
     display: none;
 }
 
-/* ---------- Paleta do tema escuro, derivada da identidade da logo ---------- */
+/* ===== Paleta do tema escuro, derivada da identidade da logo ===== */
 
 html.escuro body {
     color: #e2e8f0;
@@ -359,7 +357,7 @@ html.escuro .erro {
     border-color: rgba(248, 113, 113, 0.7);
 }
 
-/* ---------- Transições suaves entre os dois temas ---------- */
+/* ===== Transições suaves entre os dois temas ===== */
 
 body,
 .calculadora,
@@ -381,9 +379,8 @@ button {
     transition: filter 0.4s ease;
 }
 
-/* ---------- Respeito às preferências do usuário ---------- */
 
-/* Prefere menos movimento: troca de tema sem animação */
+/* troca de tema sem animação */
 @media (prefers-reduced-motion: reduce) {
 
     body,
@@ -399,7 +396,7 @@ button {
     }
 }
 
-/* Prefere menos transparência: material do botão fica sólido */
+/* material do botão fica sólido */
 @media (prefers-reduced-transparency: reduce) {
     .btn-tema {
         background: #ffffff;
